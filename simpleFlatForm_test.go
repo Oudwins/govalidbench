@@ -47,7 +47,7 @@ var SimpleFlatFormZogSchema = z.Struct(
 		"website":   z.String().Required().URL(),
 		"createdAt": z.String().Required(),
 	},
-).Required()
+)
 
 func OzzoFlatForm(form *SimpleFlatForm) error {
 	return validate.ValidateStruct(form,
