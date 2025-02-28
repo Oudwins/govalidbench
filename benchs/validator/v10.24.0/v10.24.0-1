@@ -1,0 +1,27 @@
+goos: linux
+goarch: amd64
+pkg: github.com/Oudwins/govalidbench/packages/validator
+cpu: AMD Ryzen 5 PRO 5650U with Radeon Graphics     
+BenchmarkStringFieldSimpleSuccessBench/Success-12               11887819               103.4 ns/op            16 B/op          1 allocs/op
+BenchmarkStringFieldSimpleSuccessParallel/Success-12            28352884                41.25 ns/op           16 B/op          1 allocs/op
+BenchmarkStringFieldSimpleFailure/Error-12                       5285216               223.5 ns/op           200 B/op          4 allocs/op
+BenchmarkStringFieldSimpleFailureParallel/Error-12               9617335               127.6 ns/op           200 B/op          4 allocs/op
+BenchmarkSliceFieldSuccess/Success-12                            1278474              1051 ns/op             120 B/op         12 allocs/op
+BenchmarkSliceFieldSuccessParallel/Success-12                    2473573               462.0 ns/op           120 B/op         12 allocs/op
+BenchmarkSliceFieldFailure/Error-12                               527235              2326 ns/op            2110 B/op         45 allocs/op
+BenchmarkSliceFieldFailureParallel/Error-12                      1000000              1526 ns/op            2110 B/op         45 allocs/op
+BenchmarkStructSingleFieldSuccess/Success-12                     9521143               117.2 ns/op             0 B/op          0 allocs/op
+BenchmarkStructSingleFieldSuccessParallel/Success-12            38522618                40.63 ns/op            0 B/op          0 allocs/op
+BenchmarkStructSingleFieldFailure/Error-12                       3728866               313.8 ns/op           224 B/op          5 allocs/op
+BenchmarkStructSingleFieldFailureParallel/Error-12               7554730               177.5 ns/op           224 B/op          5 allocs/op
+BenchmarkStructSimpleSuccess/Success-12                          6093187               187.1 ns/op             0 B/op          0 allocs/op
+BenchmarkStructSimpleSuccessParallel/Success-12                 20486620                66.80 ns/op            0 B/op          0 allocs/op
+BenchmarkStructSimpleFailure/Error-12                            2197393               537.7 ns/op           432 B/op          9 allocs/op
+BenchmarkStructSimpleFailureParallel/Error-12                    3965986               296.5 ns/op           432 B/op          9 allocs/op
+BenchmarkStructComplexSuccess/Success-12                          690813              1508 ns/op             146 B/op          1 allocs/op
+BenchmarkStructComplexSuccessParallel/Success-12                 1781084               603.7 ns/op           153 B/op          1 allocs/op
+BenchmarkStructComplexFailure/Error-12                            373147              3195 ns/op            2582 B/op         39 allocs/op
+BenchmarkStructComplexFailureParallel/Error-12                    833005              1762 ns/op            2592 B/op         39 allocs/op
+BenchmarkLotsOfTestsSuccess/Success-12                           3196820               377.1 ns/op            16 B/op          1 allocs/op
+PASS
+ok      github.com/Oudwins/govalidbench/packages/validator      33.444s
