@@ -289,3 +289,53 @@ func BenchmarkLotsOfTestsFailureParallel(b *testing.B) {
 		})
 	})
 }
+
+//
+// 7. Struct Complex When Generating the Schema
+//
+
+func BenchmarkStructComplexCreateSuccess(b *testing.B) {
+	internals.Clear()
+	b.Run("Success", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			s := packages.StructComplexCreateZog()
+			s.Validate(&packages.StructComplexSuccessVal)
+		}
+	})
+}
+
+func BenchmarkStructComplexCreateSuccessParallel(b *testing.B) {
+	internals.Clear()
+	b.Run("Success", func(b *testing.B) {
+		b.RunParallel(func(pb *testing.PB) {
+			for pb.Next() {
+				s := packages.StructComplexCreateZog()
+				s.Validate(&packages.StructComplexSuccessVal)
+			}
+		})
+	})
+}
+
+func BenchmarkStructComplexCreateFailure(b *testing.B) {
+	internals.Clear()
+	b.Run("Error", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			s := packages.StructComplexCreateZog()
+			errs := s.Validate(&packages.StructComplexFailureVal)
+			z.Issues.CollectMap(errs)
+		}
+	})
+}
+
+func BenchmarkStructComplexCreateFailureParallel(b *testing.B) {
+	internals.Clear()
+	b.Run("Error", func(b *testing.B) {
+		b.RunParallel(func(pb *testing.PB) {
+			for pb.Next() {
+				s := packages.StructComplexCreateZog()
+				errs := s.Validate(&packages.StructComplexFailureVal)
+				z.Issues.CollectMap(errs)
+			}
+		})
+	})
+}
