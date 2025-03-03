@@ -3,7 +3,7 @@ module github.com/Oudwins/govalidbench
 go 1.21.0
 
 require (
-	github.com/Oudwins/zog v0.16.0
+	github.com/Oudwins/zog v0.17.2
 	github.com/asaskevich/govalidator v0.0.0-20200108200545-475eaeb16496
 	github.com/go-ozzo/ozzo-validation/v4 v4.3.0
 	github.com/go-playground/validator/v10 v10.24.0

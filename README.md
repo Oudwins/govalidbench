@@ -1,7 +1,8 @@
-
 # Golang Validation Libraries Benchmarks
 
 This repo aims to benchmark the performance of popular validation libraries in Golang. The repo is still quite barebones but we will add more tests and libraries as we go.
+
+Benchmark results are stored in `/benchs/{library}/version/*.txt`
 
 ## Libraries Tested:
 
@@ -10,13 +11,13 @@ This repo aims to benchmark the performance of popular validation libraries in G
 - [asaskevich/govalidator](https://github.com/asaskevich/govalidator)
 - [Oudwins/zog](https://github.com/Oudwins/zog)
 
+## Project File Structure
 
-## What is my thinking in terms of benchmarks I should do?
-
-For each one that fails and one that passes + parallel.
-
-1. One simple test for simple primitive -> only one validation
-2. One complex tests for simple primitive -> many validations
-3. One simple test per complex type -> one validation for each
-4. One complex test per complex type -> many validations
-5. Some additional tests with nested types
+```bash
+.
+├── packages
+│   ├── ozzo
+│   ├── validator
+│   ├── govalidator
+│   └── zog
+```
