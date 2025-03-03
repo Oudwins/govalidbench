@@ -1,0 +1,34 @@
+======
+Benchmarking ozzo...
+======
+go test ./packages/ozzo -bench=. -benchmem -run=none
+goos: linux
+goarch: amd64
+pkg: github.com/Oudwins/govalidbench/packages/ozzo
+cpu: AMD Ryzen 5 PRO 5650U with Radeon Graphics     
+BenchmarkStringFieldSimpleSuccessBench/Success-12                1790533               649.3 ns/op           464 B/op          6 allocs/op
+BenchmarkStringFieldSimpleSuccessParallel/Success-12             6294021               193.1 ns/op           464 B/op          6 allocs/op
+BenchmarkStringFieldSimpleFailure/Error-12                       2280506               524.4 ns/op           448 B/op          5 allocs/op
+BenchmarkStringFieldSimpleFailureParallel/Error-12               6907794               174.4 ns/op           448 B/op          5 allocs/op
+BenchmarkSliceFieldSuccess/Success-12                             223554              5126 ns/op            4480 B/op         50 allocs/op
+BenchmarkSliceFieldSuccessParallel/Success-12                     670354              1753 ns/op            4480 B/op         50 allocs/op
+BenchmarkSliceFieldFailure/Error-12                               214518              4974 ns/op            4480 B/op         50 allocs/op
+BenchmarkSliceFieldFailureParallel/Error-12                       690456              1747 ns/op            4480 B/op         50 allocs/op
+BenchmarkStructSingleFieldSuccess/Success-12                     1323884               863.8 ns/op           632 B/op          9 allocs/op
+BenchmarkStructSingleFieldSuccessParallel/Success-12             4579004               255.2 ns/op           632 B/op          9 allocs/op
+BenchmarkStructSingleFieldFailure/Error-12                       1584091               685.5 ns/op           920 B/op         10 allocs/op
+BenchmarkStructSingleFieldFailureParallel/Error-12               4286506               282.1 ns/op           920 B/op         10 allocs/op
+BenchmarkStructSimpleSuccess/Success-12                          1000000              1101 ns/op            1008 B/op         17 allocs/op
+BenchmarkStructSimpleSuccessParallel/Success-12                  3233919               362.3 ns/op          1008 B/op         17 allocs/op
+BenchmarkStructSimpleFailure/Error-12                             788856              1312 ns/op            1680 B/op         21 allocs/op
+BenchmarkStructSimpleFailureParallel/Error-12                    2291677               534.3 ns/op          1680 B/op         21 allocs/op
+BenchmarkStructComplexSuccess/Success-12                              21         264989865 ns/op           37716 B/op        259 allocs/op
+BenchmarkStructComplexSuccessParallel/Success-12                      43          23325611 ns/op           47866 B/op        265 allocs/op
+BenchmarkStructComplexFailure/Error-12                             58857             19972 ns/op           12889 B/op        211 allocs/op
+BenchmarkStructComplexFailureParallel/Error-12                    186968              5949 ns/op           13064 B/op        211 allocs/op
+BenchmarkLotsOfTestsSuccess/Success-12                            537300              2020 ns/op            2176 B/op         21 allocs/op
+BenchmarkLotsOfTestsSuccessParallel/Success-12                   1433104               822.5 ns/op          2176 B/op         21 allocs/op
+BenchmarkLotsOfTestsFailure/Error-12                              413094              2654 ns/op            2256 B/op         26 allocs/op
+BenchmarkLotsOfTestsFailureParallel/Error-12                     1328694               904.4 ns/op          2256 B/op         26 allocs/op
+PASS
+ok      github.com/Oudwins/govalidbench/packages/ozzo   39.961s

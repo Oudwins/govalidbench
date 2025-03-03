@@ -1,0 +1,38 @@
+======
+Benchmarking zog...
+======
+go test ./packages/zog -bench=. -benchmem -run=none
+goos: linux
+goarch: amd64
+pkg: github.com/Oudwins/govalidbench/packages/zog
+cpu: AMD Ryzen 5 PRO 5650U with Radeon Graphics     
+BenchmarkStringFieldSimpleSuccessBench/Success-12        8935615               132.6 ns/op             0 B/op          0 allocs/op
+BenchmarkStringFieldSimpleSuccessParallel/Success-12            43585659                29.83 ns/op            0 B/op          0 allocs/op
+BenchmarkStringFieldSimpleFailure/Error-12                       1000000              1055 ns/op              88 B/op          3 allocs/op
+BenchmarkStringFieldSimpleFailureParallel/Error-12               5770712               207.3 ns/op            88 B/op          3 allocs/op
+BenchmarkSliceFieldSuccess/Success-12                             486556              2354 ns/op              32 B/op         10 allocs/op
+BenchmarkSliceFieldSuccessParallel/Success-12                    2697169               445.3 ns/op            32 B/op         10 allocs/op
+BenchmarkSliceFieldFailure/Error-12                                78946             13773 ns/op            1952 B/op         50 allocs/op
+BenchmarkSliceFieldFailureParallel/Error-12                       473278              2244 ns/op            1351 B/op         48 allocs/op
+BenchmarkStructSingleFieldSuccess/Success-12                     3821750               310.6 ns/op            24 B/op          3 allocs/op
+BenchmarkStructSingleFieldSuccessParallel/Success-12            13662194                93.32 ns/op           24 B/op          3 allocs/op
+BenchmarkStructSingleFieldFailure/Error-12                        847802              1301 ns/op             548 B/op         10 allocs/op
+BenchmarkStructSingleFieldFailureParallel/Error-12               2728998               448.2 ns/op           551 B/op          9 allocs/op
+BenchmarkStructSimpleSuccess/Success-12                          2297650               517.1 ns/op            48 B/op          6 allocs/op
+BenchmarkStructSimpleSuccessParallel/Success-12                  7869750               203.3 ns/op            48 B/op          6 allocs/op
+BenchmarkStructSimpleFailure/Error-12                             753820              1499 ns/op             573 B/op         13 allocs/op
+BenchmarkStructSimpleFailureParallel/Error-12                    2208266               600.1 ns/op           577 B/op         12 allocs/op
+BenchmarkStructComplexSuccess/Success-12                          330733              3626 ns/op             451 B/op         28 allocs/op
+BenchmarkStructComplexSuccessParallel/Success-12                 1000000              1294 ns/op             476 B/op         28 allocs/op
+BenchmarkStructComplexFailure/Error-12                            124696              8428 ns/op            1395 B/op         59 allocs/op
+BenchmarkStructComplexFailureParallel/Error-12                    465020              3047 ns/op            1410 B/op         57 allocs/op
+BenchmarkLotsOfTestsSuccess/Success-12                          13578138                88.89 ns/op            0 B/op          0 allocs/op
+BenchmarkLotsOfTestsSuccessParallel/Success-12                  56091579                27.92 ns/op            0 B/op          0 allocs/op
+BenchmarkLotsOfTestsFailure/Error-12                            16657924                62.81 ns/op            0 B/op          0 allocs/op
+BenchmarkLotsOfTestsFailureParallel/Error-12                    68449821                22.37 ns/op            0 B/op          0 allocs/op
+BenchmarkStructComplexCreateSuccess/Success-12                    119824              8757 ns/op            9702 B/op        114 allocs/op
+BenchmarkStructComplexCreateSuccessParallel/Success-12            294409              4607 ns/op            9905 B/op        114 allocs/op
+BenchmarkStructComplexCreateFailure/Error-12                       80371             14069 ns/op           10652 B/op        145 allocs/op
+BenchmarkStructComplexCreateFailureParallel/Error-12              192896              6993 ns/op           10793 B/op        144 allocs/op
+PASS
+ok      github.com/Oudwins/govalidbench/packages/zog    41.125s
