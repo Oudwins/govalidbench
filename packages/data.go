@@ -136,22 +136,22 @@ var StructSimpleOzzo = func(s *StructSimpleType) {
 
 type StructComplexNested struct {
 	// contains Validator & Govalidator tags
-	Test string `validate:"min=5,max=10" valid:"stringlength(5|10)"`
+	Test string `validate:"min=5,max=10" valid:"minstringlength(5),maxstringlength(10)"`
 }
 
 type StructComplexType struct {
 	// contains Validator & Govalidator tags
-	BlankTag  string `validate:""`
-	Len       string `validate:"len=10" valid:"stringlength(10|10)"`
-	Min       string `validate:"min=1" valid:"minstringlength(1)"`
-	Max       string `validate:"max=10" valid:"maxstringlength(10)"`
-	MinMax    string `validate:"min=1,max=10" valid:"minstringlength(1),maxstringlength(10)"`
-	Email     string `validate:"email" valid:"email"`
-	Url       string `validate:"url" valid:"url"`
-	Int       int    `validate:"gte=3,lte=10" valid:"gte(3),lte(10)"`
-	Color     string `validate:"oneof=red green" valid:"in(red,green)"`
-	Sub       *StructComplexNested
-	SubIgnore *StructComplexNested `validate:"-"`
+	BlankTag  string               `validate:""`
+	Len       string               `validate:"len=10" valid:"stringlength(10|10)"`
+	Min       string               `validate:"min=1" valid:"minstringlength(1)"`
+	Max       string               `validate:"max=10" valid:"maxstringlength(10)"`
+	MinMax    string               `validate:"min=1,max=10" valid:"minstringlength(1),maxstringlength(10)"`
+	Email     string               `validate:"email" valid:"email"`
+	Url       string               `validate:"url" valid:"url"`
+	Int       int                  `validate:"gte=3,lte=10" valid:"range(3|10)"`
+	Color     string               `validate:"oneof=red green" valid:"in(red|green)"`
+	Sub       *StructComplexNested `valid:"optional"`
+	SubIgnore *StructComplexNested `validate:"-" valid:"-"`
 	Anonymous struct {
 		A string `validate:"min=5,max=10" valid:"stringlength(5|10)"`
 	}
@@ -198,25 +198,30 @@ var StructComplexFailureVal = StructComplexType{
 	},
 }
 
+func StructComplexCreateZog() *z.StructSchema {
+	return z.Struct(
+		z.Schema{
+			"Len":    z.String().Len(10),
+			"Min":    z.String().Min(1),
+			"Max":    z.String().Max(10),
+			"MinMax": z.String().Min(1).Max(10),
+			"Email":  z.String().Email(),
+			"Url":    z.String().URL(),
+			"Int":    z.Int().GTE(3).LTE(10),
+			"Color":  z.String().OneOf([]string{"red", "blue"}),
+			"Sub": z.Ptr(z.Struct(z.Schema{
+				"Test": z.String().Min(5).Max(10),
+			})),
+			"Anonymous": z.Struct(z.Schema{
+				"A": z.String().Min(5).Max(10),
+			}),
+		},
+	)
+
+}
+
 // Zog
-var StructComplexZog = z.Struct(
-	z.Schema{
-		"Len":    z.String().Len(10),
-		"Min":    z.String().Min(1),
-		"Max":    z.String().Max(10),
-		"MinMax": z.String().Min(1).Max(10),
-		"Email":  z.String().Email(),
-		"Url":    z.String().URL(),
-		"Int":    z.Int().GTE(3).LTE(10),
-		"Color":  z.String().OneOf([]string{"red", "blue"}),
-		"Sub": z.Ptr(z.Struct(z.Schema{
-			"Test": z.String().Min(5).Max(10),
-		})),
-		"Anonymous": z.Struct(z.Schema{
-			"A": z.String().Min(5).Max(10),
-		}),
-	},
-)
+var StructComplexZog = StructComplexCreateZog()
 
 // Ozzo
 var StructComplexOzzo = func(s *StructComplexType) {
