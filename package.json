@@ -1,0 +1,16 @@
+{
+  "name": "govalidbench",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "This repo aims to benchmark the performance of popular validation libraries in Golang. The repo is still quite barebones but we will add more tests and libraries as we go.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "benny": "^3.7.1",
+    "zod": "^3.24.4"
+  }
+}
